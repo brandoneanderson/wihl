@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrapped In His Love</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: #faf7f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links .contact-btn {
+            color: white;
+        }
+
+        .contact-btn {
+            background-color: #4a3c2e;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4rem 0;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-images {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .gallery-btn {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin-right: -20px;
+        }
+
+        .curved-image {
+            position: relative;
+            width: 75%;
+            height: 110%;
+            border-radius: 0 50% 0 50%;
+            overflow: hidden;
+            background-color: #1a1a1a;
+        }
+
+        .curved-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .accent-image {
+            position: absolute;
+            right: -12%;
+            bottom: -10%;
+            width: 35%;
+            height: 50%;
+            object-fit: cover;
+            border-radius: 0 50% 0 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .decorative-line {
+            position: absolute;
+            top: -5%;
+            right: 21%;
+            width: 75%;
+            height: 110%;
+            border: 2px solid #c4a484;
+            border-radius: 0 50% 0 50%;
+            border-left: 50%;
+            border-bottom: 50%;
+            z-index: 1;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/Users/brandonanderson/MyWebsite/ai_website/index.html" class="logo">WIHL</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/services">Services</a>
+                <a href="/gallery">Gallery</a>
+                <a href="/about">About us</a>
+                <a href="/contact" class="contact-btn">Contact</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Embrace the beauty<br>of His Love through<br>elegant design.</h1>
+                <div class="cta-buttons">
+                    <a href="/contact" class="contact-btn">Contact</a>
+                    <a href="/gallery" class="gallery-btn">Gallery →</a>
+                </div>
+            </div>
+            <div class="hero-images">
+                <div class="image-container">
+                    <div class="curved-image">
+                        <img src="assets/brown_knitted_scarf.jpeg" alt="Main showcase image">
+                    </div>
+                    <img src="assets/dani_scarf.JPG" alt="Dani with her scarf" class="accent-image">
+                    <div class="decorative-line"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
