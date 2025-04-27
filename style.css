@@ -1,0 +1,208 @@
+/* Wrapped In His Love - Main Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+body {
+    background-color: #faf7f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.nav-links .contact-btn {
+    color: white;
+}
+
+.contact-btn {
+    background-color: #4a3c2e;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 0;
+    gap: 2rem;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-images {
+    flex: 1;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.gallery-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-right: -20px;
+}
+
+.curved-image {
+    position: relative;
+    width: 75%;
+    height: 110%;
+    border-radius: 0 50% 0 50%;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+}
+
+.curved-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.curved-image:hover {
+    transform: scale(1.08);
+    z-index: 2;
+}
+
+.accent-image {
+    position: absolute;
+    right: -23%;
+    bottom: -10%;
+    width: 46%;
+    height: 61%;
+    object-fit: cover;
+    border-radius: 0 50% 0 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+}
+
+.accent-image:hover {
+    transform: scale(1.08);
+    z-index: 2;
+}
+
+.decorative-line {
+    position: absolute;
+    top: -5%;
+    right: 21%;
+    width: 75%;
+    height: 110%;
+    border: 2px solid #c4a484;
+    border-radius: 0 50% 0 50%;
+    border-left: 50%;
+    border-bottom: 50%;
+    z-index: 1;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fade-in animation for sections */
+.fade-in-section { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+.fade-in-section.visible { opacity: 1; transform: none; }
+
+/* Button hover effect */
+.contact-btn, .gallery-btn, #scripture-prev, #scripture-next {
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+.contact-btn:hover, .gallery-btn:hover, #scripture-prev:hover, #scripture-next:hover {
+    background: #c4a484;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(196,164,132,0.15);
+    transform: scale(1.07);
+}
+/* Ripple effect for buttons */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    background-color: rgba(196,164,132,0.3);
+    pointer-events: none;
+}
+@keyframes ripple {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+/* Gallery image interactivity */
+.gallery-img {
+    transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.35s;
+    cursor: pointer;
+}
+.gallery-img:hover {
+    transform: scale(1.12) rotate(-1deg);
+    box-shadow: 0 12px 36px rgba(196,164,132,0.22);
+    z-index: 2;
+}
+/* Service card image interactivity */
+.service-card {
+    transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.35s;
+}
+.service-card:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 8px 32px rgba(196,164,132,0.18);
+    z-index: 2;
+} 
