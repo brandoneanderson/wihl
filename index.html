@@ -114,6 +114,7 @@
             border-radius: 0 50% 0 50%;
             overflow: hidden;
             background-color: #1a1a1a;
+            transition: transform 0.4s cubic-bezier(.4,2,.6,1);
         }
 
         .curved-image img {
@@ -122,16 +123,28 @@
             object-fit: cover;
         }
 
+        .curved-image:hover {
+            transform: scale(1.08);
+            z-index: 2;
+        } 
+
         .accent-image {
             position: absolute;
-            right: -12%;
+            right: -23%;
             bottom: -10%;
-            width: 35%;
-            height: 50%;
+            width: 46%;
+            height: 61%;
             object-fit: cover;
             border-radius: 0 50% 0 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+
         }
+
+        .accent-image:hover {
+            transform: scale(1.08);
+            z-index: 2;
+        } 
 
         .decorative-line {
             position: absolute;
@@ -145,23 +158,74 @@
             border-bottom: 50%;
             z-index: 1;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Button hover effect */
+        .contact-btn, .gallery-btn, #scripture-prev, #scripture-next {
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-btn:hover, .gallery-btn:hover, #scripture-prev:hover, #scripture-next:hover {
+            background: #c4a484;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(196,164,132,0.15);
+            transform: scale(1.07);
+        }
+        /* Ripple effect for buttons */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            background-color: rgba(196,164,132,0.3);
+            pointer-events: none;
+        }
+        @keyframes ripple {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+        /* Gallery image interactivity */
+        .gallery-img {
+            transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.35s;
+            cursor: pointer;
+        }
+        .gallery-img:hover {
+            transform: scale(1.12) rotate(-1deg);
+            box-shadow: 0 12px 36px rgba(196,164,132,0.22);
+            z-index: 2;
+        }
+        /* Service card image interactivity */
+        .service-card {
+            transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.35s;
+        }
+        .service-card:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 32px rgba(196,164,132,0.18);
+            z-index: 2;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/wihl_logo.png">
 </head>
 <body>
     <div class="container">
         <nav>
-            <a href="/Users/brandonanderson/MyWebsite/ai_website/index.html" class="logo">WIHL</a>
+            <a href="#home" class="logo">WIHL</a>
             <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/services">Services</a>
-                <a href="/gallery">Gallery</a>
-                <a href="/about">About us</a>
-                <a href="/contact" class="contact-btn">Contact</a>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#about">About us</a>
+                <a href="#contact" class="contact-btn">Contact</a>
             </div>
         </nav>
-
-        <section class="hero">
+        <section class="hero" id="home">
             <div class="hero-content">
                 <h1>Embrace the beauty<br>of His Love through<br>elegant design.</h1>
                 <div class="cta-buttons">
@@ -172,13 +236,171 @@
             <div class="hero-images">
                 <div class="image-container">
                     <div class="curved-image">
-                        <img src="assets/brown_knitted_scarf.jpeg" alt="Main showcase image">
+                        <img src="assets/scarf_hanger.jpg" alt="Main showcase image">
                     </div>
-                    <img src="assets/dani_scarf.JPG" alt="Dani with her scarf" class="accent-image">
+                    <img src="assets/peace_pose.JPG" alt="Secondary Home Image" class="accent-image">
                     <div class="decorative-line"></div>
                 </div>
             </div>
         </section>
     </div>
+    <!-- Services Section -->
+    <section id="services" style="background:#f5efe7; padding: 4rem 0;">
+        <div class="container fade-in-section" style="text-align:center;">
+            <h2 style="font-size:2.5rem; color:#4a3c2e; margin-bottom:1.5rem;">My Services</h2>
+            <p style="max-width:700px; margin:0 auto 2.5rem; color:#555; font-size:1.2rem;">I create hand-knit scarves in any color, each crafted with prayer and care. Every scarf comes with a personalized, scripture-based message, so you or your loved one can experience God's love in a tangible way. I offer custom designs, thoughtful packaging, and shipping to wherever you are.</p>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2.5rem;">
+                <div class="service-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:2rem; width:300px;">
+                    <h3 style="color:#4a3c2e; margin-bottom:1rem;">Custom Knit Scarves</h3>
+                    <p style="color:#555;">Choose your favorite color or style, and I'll knit a scarf just for you, filled with love and prayer.</p>
+                </div>
+                <div class="service-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:2rem; width:300px;">
+                    <h3 style="color:#4a3c2e; margin-bottom:1rem;">Personalized Scripture Notes</h3>
+                    <p style="color:#555;">Each scarf is packaged with a hand-written, prayed-over message inspired by God's Word, tailored for you or your recipient for free.</p>
+                </div>
+                <div class="service-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:2rem; width:300px;">
+                    <h3 style="color:#4a3c2e; margin-bottom:1rem;">Shipping & Gifting</h3>
+                    <p style="color:#555;">I ship anywhere, and can package your scarf as a heartfelt gift for any occasion.</p>
+                </div>
+            </div>
+            <br></br>
+            <div id="scripture-rotator" style="margin: 0 auto 2.5rem auto; max-width: 800px; text-align: center; min-height: 60px; position:relative;">
+                <button id="scripture-prev" style="position:absolute; left:0; top:50%; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#c4a484; cursor:pointer;">&#8592;</button>
+                <span id="scripture-text" style="display: inline-block; font-size: 1.3rem; color: #4a3c2e; background: #f5efe7; border-radius: 8px; padding: 0.7rem 1.5rem; box-shadow: 0 2px 8px rgba(196,164,132,0.07); opacity: 1; transition: opacity 0.7s;"></span>
+                <button id="scripture-next" style="position:absolute; right:0; top:50%; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#c4a484; cursor:pointer;">&#8594;</button>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery Section -->
+    <section id="gallery" style="padding:4rem 0; background:#faf7f4;">
+        <div class="container fade-in-section" style="text-align:center;">
+            <h2 style="font-size:2.5rem; color:#4a3c2e; margin-bottom:1.5rem;">Gallery</h2>
+            <p style="max-width:700px; margin:0 auto 2.5rem; color:#555; font-size:1.2rem;">Discover my collection of handcrafted scarfs, each piece designed with faith and love.</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:2rem; max-width:900px; margin:0 auto;">
+                <img src="assets/max_laugh.JPG" alt="Red Scarf style" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/jose_bible.JPG" alt="Blue scarf style" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/couple_pic.JPG" alt="Couple Scarf Picture" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/kids_pic.JPG" alt="Baby Scarf Picture" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/peace_pose.JPG" alt="Brown Scarf style" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/dani_scarf.JPG" alt="Yellow Scarf Picture" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+            </div>
+        </div>
+    </section>
+    <!-- About Us Section -->
+    <section id="about" style="background:#f5efe7; padding:4rem 0;">
+        <div class="container fade-in-section" style="display:flex; flex-wrap:wrap; align-items:center; gap:3rem;">
+            <div style="flex:1; min-width:260px;">
+                <img src="assets/danu_cute_solo.jpg" alt="About Wrapped In His Love" style="width:100%; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+            </div>
+            <div style="flex:2; min-width:260px;">
+                <h2 style="font-size:2.5rem; color:#4a3c2e; margin-bottom:1.5rem;">About Me</h2>
+                <p style="color:#555; font-size:1.2rem; margin-bottom:1.5rem;">Hi! I'm Daniella Embu, a student at St. Olaf College, passionate about knitting and sharing God's love. I started Wrapped In His Love to bring warmth, comfort, and encouragement to others through hand-knit scarves and prayerful, personalized messages. Each scarf is made with care, prayed over, and sent out with a scripture note chosen just for you. My hope is that every package is a reminder that you are deeply loved by God.</p>
+                <p style="color:#555; font-size:1.1rem;">Let me help you or someone you love feel wrapped in God's love—one stitch and one prayer at a time.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" style="padding:4rem 0; background:#faf7f4;">
+        <div class="container fade-in-section" style="max-width:700px; margin:0 auto; text-align:center;">
+            <h2 style="font-size:2.5rem; color:#4a3c2e; margin-bottom:1.5rem;">Contact Me</h2>
+            <p style="color:#555; font-size:1.2rem; margin-bottom:2rem;">Interested in a custom scarf, a special gift, or have a question? I'd love to hear from you! Send me a message and I'll get back to you soon—let's create something beautiful and meaningful together.</p>
+            <form style="display:flex; flex-direction:column; gap:1.2rem; align-items:center;">
+                <input type="text" placeholder="Your Name" required style="width:100%; max-width:400px; padding:0.8rem; border-radius:6px; border:1px solid #ccc;">
+                <input type="email" placeholder="Your Email" required style="width:100%; max-width:400px; padding:0.8rem; border-radius:6px; border:1px solid #ccc;">
+                <textarea placeholder="Your Message" required style="width:100%; max-width:400px; padding:0.8rem; border-radius:6px; border:1px solid #ccc; min-height:120px;"></textarea>
+                <button type="submit" class="contact-btn" style="margin-top:1rem;">Send Message</button>
+            </form>
+            <div style="margin-top:2.5rem; color:#555;">
+                <div>Email: <a href="mailto:daniellaembu2.0@gmail.com" style="color:#4a3c2e; text-decoration:underline;">daniellaembu2.0@gmail.com</a></div>
+                <div>Instagram: <a href="https://instagram.com/wrappedinhislovee" target="_blank" style="color:#4a3c2e; text-decoration:underline;">@wrappedinhislovee</a></div>
+            </div>
+        </div>
+    </section>
+    <footer style="background:#f5efe7; padding:2rem 0 1rem 0; text-align:center; color:#4a3c2e; font-size:1rem; letter-spacing:0.02em;">
+        <div class="container fade-in-section" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem; max-width:1200px; margin:0 auto;">
+            <div style="flex:1; min-width:200px; text-align:left;">
+                <span style="font-weight:bold;">Wrapped In His Love</span>
+            </div>
+            <div style="flex:2; min-width:200px; text-align:center;">
+                &copy; 2025 Brandon Ekow Anderson. All rights reserved.
+            </div>
+            <div style="flex:1; min-width:200px; text-align:right;">
+                <a href="#home" style="color:#4a3c2e; text-decoration:none; font-weight:500;">Back to top</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // Interactive Scripture Rotator
+    const scriptures = [
+      '"Let all that you do be done in love." – 1 Corinthians 16:14',
+      '"I have loved you with an everlasting love." – Jeremiah 31:3',
+      '"She is clothed with strength and dignity." – Proverbs 31:25',
+      '"The Lord bless you and keep you." – Numbers 6:24',
+      '"You are God\'s masterpiece." – Ephesians 2:10',
+      '"The joy of the Lord is your strength." – Nehemiah 8:10',
+      '"Be still, and know that I am God." – Psalm 46:10',
+      '"God is within her, she will not fall." – Psalm 46:5',
+      '"And we know that in all things God works for the good of those who love him, who have been called according to his purpose." – Romans 8:28',
+      '"But seek first his kingdom and his righteousness, and all these things will be given to you as well." – Matthew 6:33',
+      '"For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, plans to give you hope and a future." – Jeremiah 29:11'
+    ];
+    let scriptureIdx = 0;
+    const scriptureText = document.getElementById('scripture-text');
+    const prevBtn = document.getElementById('scripture-prev');
+    const nextBtn = document.getElementById('scripture-next');
+    let scriptureInterval;
+    function showScripture(idx, fade=true) {
+      if (fade) scriptureText.style.opacity = 0;
+      setTimeout(() => {
+        scriptureText.textContent = scriptures[idx];
+        scriptureText.style.opacity = 1;
+      }, fade ? 400 : 0);
+    }
+    function nextScripture() {
+      scriptureIdx = (scriptureIdx + 1) % scriptures.length;
+      showScripture(scriptureIdx);
+    }
+    function prevScripture() {
+      scriptureIdx = (scriptureIdx - 1 + scriptures.length) % scriptures.length;
+      showScripture(scriptureIdx);
+    }
+    prevBtn.onclick = () => { prevScripture(); resetInterval(); };
+    nextBtn.onclick = () => { nextScripture(); resetInterval(); };
+    function resetInterval() {
+      clearInterval(scriptureInterval);
+      scriptureInterval = setInterval(nextScripture, 5000);
+    }
+    showScripture(scriptureIdx, false);
+    scriptureInterval = setInterval(nextScripture, 5000);
+
+    // Ripple effect for all interactive buttons
+    function addRippleEffect(e) {
+      const btn = e.currentTarget;
+      const circle = document.createElement('span');
+      circle.className = 'ripple';
+      const rect = btn.getBoundingClientRect();
+      circle.style.width = circle.style.height = Math.max(rect.width, rect.height) + 'px';
+      circle.style.left = (e.clientX - rect.left - rect.width/2) + rect.width/2 + 'px';
+      circle.style.top = (e.clientY - rect.top - rect.height/2) + rect.height/2 + 'px';
+      btn.appendChild(circle);
+      setTimeout(() => circle.remove(), 600);
+    }
+    document.querySelectorAll('.contact-btn, .gallery-btn, #scripture-prev, #scripture-next').forEach(btn => {
+      btn.addEventListener('click', addRippleEffect);
+    });
+
+    // Fade-in on scroll for all .fade-in-section elements
+    const faders = document.querySelectorAll('.fade-in-section');
+    const appearOptions = { threshold: 0.15 };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+    faders.forEach(fader => { appearOnScroll.observe(fader); });
+    </script>
 </body>
 </html>
