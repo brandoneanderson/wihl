@@ -205,4 +205,45 @@ html {
     transform: scale(1.05) rotate(1deg);
     box-shadow: 0 8px 32px rgba(196,164,132,0.18);
     z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    padding: 2rem 0;
+    gap: 1.5rem;
+  }
+  .hero-content, .hero-images {
+    width: 100%;
+    flex: unset;
+  }
+  .image-container {
+    height: 300px;
+    margin-right: 0;
+  }
+  .curved-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 40% 40%;
+  }
+  .accent-image {
+    position: absolute;
+    right: 0;
+    bottom: -10%;
+    width: 60%;
+    height: 50%;
+    border-radius: 0 40% 0 0;
+  }
+  .decorative-line {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .image-container {
+    height: 180px;
+  }
 } 
