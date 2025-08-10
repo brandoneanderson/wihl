@@ -47,6 +47,34 @@ if (scriptureText) {
   scriptureInterval = setInterval(nextScripture, 5000);
 }
 
+// Mobile Navigation Toggle
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+if (mobileMenuToggle && navLinks) {
+  mobileMenuToggle.addEventListener('click', function() {
+    this.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  // Close mobile menu when clicking on a link
+  const navLinksItems = navLinks.querySelectorAll('a');
+  navLinksItems.forEach(link => {
+    link.addEventListener('click', function() {
+      mobileMenuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+      mobileMenuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    }
+  });
+}
+
 // Ripple effect for all interactive buttons
 function addRippleEffect(e) {
   const btn = e.currentTarget;

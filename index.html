@@ -15,7 +15,12 @@
                 <img src="assets/wihl_logo.png" alt="WIHL Logo" style="height: 2.1rem; width: 2.1rem; border-radius: 50%; object-fit: cover;">
                 Wrapped in His Love
             </a>
-            <div class="nav-links">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
                 <a href="#home">Home</a>
                 <a href="#services">Services</a>
                 <a href="#gallery">Gallery</a>
@@ -46,17 +51,17 @@
     <section id="services" style="background:#fbe3db; padding: 4rem 0;">
         <div class="container fade-in-section" style="text-align:center;">
             <h2 style="font-size:2.5rem; color:#4a3c2e; margin-bottom:1.5rem;">My Services</h2>
-            <p style="max-width:700px; margin:0 auto 2.5rem; color:#555; font-size:1.2rem;">I create hand-knit scarves in any color, each crafted with prayer and care. Every scarf comes with a personalized, scripture-based message, so you or your loved one can experience God's love in a tangible way. I offer custom designs, thoughtful packaging, and shipping to wherever you are.</p>
-            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2.5rem;">
-                <div class="service-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:2rem; width:300px;">
+            <p style="max-width:700px; margin:0 auto 2.5rem; color:#555; font-size:1.2rem;">I create hand-knit scarves in any color, each crafted with prayer and care. Every scarf comes with a personalized, scripture-based affirmation card, so you or your loved one can experience God's love in a tangible way. I offer custom designs, thoughtful packaging, and shipping to wherever you are.</p>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2.5rem; max-width:1000px; margin:0 auto;">
+                <div class="service-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:2rem; width:300px; flex:1; min-width:280px;">
                     <h3 style="color:#4a3c2e; margin-bottom:1rem;">Custom Knit Scarves</h3>
                     <p style="color:#555;">Choose your favorite color or style, and I'll knit a scarf just for you, filled with love and prayer.</p>
                 </div>
-                <div class="service-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:2rem; width:300px;">
-                    <h3 style="color:#4a3c2e; margin-bottom:1rem;">Personalized Scripture Notes</h3>
+                <div class="service-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:2rem; width:300px; flex:1; min-width:280px;">
+                    <h3 style="color:#4a3c2e; margin-bottom:1rem;">Personalized Scripture-Based Affirmation Card</h3>
                     <p style="color:#555;">Each scarf is packaged with a hand-written, prayed-over message inspired by God's Word, tailored for you or your recipient for free.</p>
                 </div>
-                <div class="service-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:2rem; width:300px;">
+                <div class="service-card" style="background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding:2rem; width:300px; flex:1; min-width:280px;">
                     <h3 style="color:#4a3c2e; margin-bottom:1rem;">Shipping & Gifting</h3>
                     <p style="color:#555;">I ship anywhere, and can package your scarf as a heartfelt gift for any occasion.</p>
                 </div>
@@ -68,7 +73,7 @@
                 <button id="scripture-next" style="position:absolute; right:0; top:50%; transform:translateY(-50%); background:none; border:none; font-size:2rem; color:#c4a484; cursor:pointer;">&#8594;</button>
             </div>
 
-            <div id="order-now-button" style="flex: 1; min-width: 160px; background: #3a2e25; color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 2rem; border-radius: 0.5rem; min-height: 160px;">
+            <div id="order-now-button" style="flex: 1; min-width: 160px; background: #3a2e25; color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 2rem; border-radius: 0.5rem; min-height: 160px; max-width: 500px; margin: 0 auto;">
                 <h2 style="font-size: 2rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Start Your Custom Scarf</h2>
                 <p style="margin-bottom: 1.5rem;">Fill out this google form to get started.</p>    
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHiWn8sM2LrAvHho4Sk1mQwPR3_Za95a5e_uj4ok86PGQxcA/viewform" style="background: #faf7f4; color: #3a2e25; padding: 0.7rem 1.2rem; border-radius: 4px; text-decoration: none; font-weight: 500; width: fit-content;">Order Now</a>
@@ -77,15 +82,19 @@
     </section>
     <!-- Gallery Section -->
     <section id="gallery" style="padding:4rem 0; background:#fdf1ed;">
-        <div class="container fade-in-section" style="text-align:center;">
+        <div style="text-align:center;">
             <h2 style="font-size:2.5rem; color:#4a3c2e; margin-bottom:1.5rem;">Gallery</h2>
             <p style="max-width:700px; margin:0 auto 2.5rem; color:#555; font-size:1.2rem;">Discover my collection of handcrafted scarfs, each piece designed with faith and love.</p>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:2rem; max-width:900px; margin:0 auto;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:2rem; max-width:900px; margin:0 auto; padding:0 1rem;">
                 <img src="assets/max_laugh.JPG" alt="Red Scarf style" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
                 <img src="assets/jose_bible.JPG" alt="Blue scarf style" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
                 <img src="assets/couple_pic.JPG" alt="Couple Scarf Picture" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
                 <img src="assets/peace_pose.JPG" alt="Brown Scarf style" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-                <img src="assets/dani_scarf.JPG" alt="Yellow Scarf Picture" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/personalized_scripture_message.jpeg" alt="Personalized scripture message" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/wihl_card.jpeg" alt="WIHL Card" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/wihl_happy_customer.jpeg" alt="Happy Customer" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/wihl_package.jpeg" alt="WIHL Complete Package" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                <img src="assets/wihl_packages_multiple.jpeg" alt="Multiple Packages" class="gallery-img" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
             </div>
         </div>
     </section>
@@ -97,7 +106,7 @@
             </div>
             <div style="flex:2; min-width:260px;">
                 <h2 style="font-size:2.5rem; color:#4a3c2e; margin-bottom:1.5rem;">About Me</h2>
-                <p style="color:#555; font-size:1.2rem; margin-bottom:1.5rem;">Hi! I'm Daniella Embu, a student at St. Olaf College, passionate about knitting and sharing God's love. I started Wrapped In His Love to bring warmth, comfort, and encouragement to others through hand-knit scarves and prayerful, personalized messages. Each scarf is made with care, prayed over, and sent out with a scripture note chosen just for you. My hope is that every package is a reminder that you are deeply loved by God.</p>
+                <p style="color:#555; font-size:1.2rem; margin-bottom:1.5rem;">Hi! I'm Daniella Embu, an alumni from St. Olaf College and a therapist, passionate about knitting and sharing God's love. A scarf is something that covers you; you wear it close to you, and it's intimate, warm and comfortable. When you wear this scarf let it be a comforting reminder of the warmth, closeness, security and safety of God's love to you. You are wrapped in God's love because his banner over you is love. He holds you in his loving arms, he knit and wove you together perfectly as his masterpiece and his beautiful beloved. Spend time in prayer with him and stay warm and cozy knowing you're wrapped in prayer and love!</p>
                 <p style="color:#555; font-size:1.1rem;">Let me help you or someone you love feel wrapped in God's love—one stitch and one prayer at a time.</p>
             </div>
         </div>
@@ -114,7 +123,6 @@
                 <button type="submit" class="contact-btn" style="margin-top:1rem;">Send Message</button>
             </form>
             <div style="margin-top:2.5rem; color:#555;">
-                <div>Email: <a href="mailto:daniellaembu2.0@gmail.com" style="color:#4a3c2e; text-decoration:underline;">daniellaembu2.0@gmail.com</a></div>
                 <div>Instagram: <a href="https://instagram.com/wrappedinhislovee" target="_blank" style="color:#4a3c2e; text-decoration:underline;">@wrappedinhislovee</a></div>
             </div>
         </div>
