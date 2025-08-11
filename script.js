@@ -75,6 +75,111 @@ if (mobileMenuToggle && navLinks) {
   });
 }
 
+// Google Analytics Event Tracking
+function trackEvent(eventName, eventCategory, eventAction, eventLabel = null) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', eventName, {
+      event_category: eventCategory,
+      event_action: eventAction,
+      event_label: eventLabel
+    });
+  }
+}
+
+// Track button clicks
+document.addEventListener('DOMContentLoaded', function() {
+  // Track CTA button clicks
+  const ctaButtons = document.querySelectorAll('.contact-btn, .gallery-btn');
+  ctaButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const buttonText = this.textContent.trim();
+      trackEvent('button_click', 'engagement', 'cta_click', buttonText);
+    });
+  });
+
+  // Track Order Now button click
+  const orderButton = document.querySelector('#order-now-button a');
+  if (orderButton) {
+    orderButton.addEventListener('click', function() {
+      trackEvent('button_click', 'conversion', 'order_form_click', 'Google Form');
+    });
+  }
+
+  // Track Instagram link click
+  const instagramLink = document.querySelector('a[href*="instagram.com"]');
+  if (instagramLink) {
+    instagramLink.addEventListener('click', function() {
+      trackEvent('link_click', 'social', 'instagram_click', 'Instagram Profile');
+    });
+  }
+
+  // Track scripture navigation
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      trackEvent('interaction', 'content', 'scripture_navigation', 'Previous Scripture');
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      trackEvent('interaction', 'content', 'scripture_navigation', 'Next Scripture');
+    });
+  }
+
+  // Track gallery image clicks
+  const galleryImages = document.querySelectorAll('.gallery-img');
+  galleryImages.forEach(img => {
+    img.addEventListener('click', function() {
+      const altText = this.alt || 'Gallery Image';
+      trackEvent('interaction', 'gallery', 'image_click', altText);
+    });
+  });
+
+  // Track mobile menu interactions
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', function() {
+      const isActive = this.classList.contains('active');
+      trackEvent('interaction', 'navigation', 'mobile_menu', isActive ? 'Open' : 'Close');
+    });
+  }
+
+  // Track navigation link clicks
+  const navLinks = document.querySelectorAll('nav .nav-links a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const href = this.getAttribute('href');
+      const linkText = this.textContent.trim();
+      if (href.startsWith('#')) {
+        trackEvent('navigation', 'internal', 'section_nav', linkText);
+      }
+    });
+  });
+
+  // Track scroll depth (optional - tracks when users scroll 25%, 50%, 75%, 100%)
+  let scrollDepthTracked = [false, false, false, false];
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.offsetHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    if (scrollPercent >= 25 && !scrollDepthTracked[0]) {
+      trackEvent('engagement', 'scroll', 'scroll_depth', '25%');
+      scrollDepthTracked[0] = true;
+    }
+    if (scrollPercent >= 50 && !scrollDepthTracked[1]) {
+      trackEvent('engagement', 'scroll', 'scroll_depth', '50%');
+      scrollDepthTracked[1] = true;
+    }
+    if (scrollPercent >= 75 && !scrollDepthTracked[2]) {
+      trackEvent('engagement', 'scroll', 'scroll_depth', '75%');
+      scrollDepthTracked[2] = true;
+    }
+    if (scrollPercent >= 100 && !scrollDepthTracked[3]) {
+      trackEvent('engagement', 'scroll', 'scroll_depth', '100%');
+      scrollDepthTracked[3] = true;
+    }
+  });
+});
+
 // Ripple effect for all interactive buttons
 function addRippleEffect(e) {
   const btn = e.currentTarget;
@@ -126,6 +231,10 @@ const contactForm = document.querySelector('#contact form');
 if (contactForm) {
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    // Track form submission
+    trackEvent('form_submit', 'contact', 'contact_form', 'Contact Form');
+    
     this.style.display = 'none';
     const thanks = document.createElement('div');
     thanks.innerHTML = '<h3 style="color:#4a3c2e; margin-top:2rem;">Thank you for reaching out! I will pray over your request and reply soon.</h3>';
