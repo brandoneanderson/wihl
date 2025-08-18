@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
   ctaButtons.forEach(button => {
     button.addEventListener('click', function() {
       const buttonText = this.textContent.trim();
-      trackEvent('button_click', 'engagement', 'cta_click', buttonText);
+      trackEvent('button_click_cta', 'engagement', 'cta_click', buttonText);
     });
   });
 
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const orderButton = document.querySelector('#order-now-button a');
   if (orderButton) {
     orderButton.addEventListener('click', function() {
-      trackEvent('button_click', 'conversion', 'order_form_click', 'Google Form');
+      trackEvent('button_click_order_now', 'conversion', 'order_form_click', 'Google Form');
     });
   }
 
@@ -109,19 +109,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const instagramLink = document.querySelector('a[href*="instagram.com"]');
   if (instagramLink) {
     instagramLink.addEventListener('click', function() {
-      trackEvent('link_click', 'social', 'instagram_click', 'Instagram Profile');
+      trackEvent('link_click_instagram', 'social', 'instagram_click', 'Instagram Profile');
     });
   }
 
   // Track scripture navigation
   if (prevBtn) {
     prevBtn.addEventListener('click', function() {
-      trackEvent('interaction', 'content', 'scripture_navigation', 'Previous Scripture');
+      trackEvent('interaction_scripture_navigation_prev', 'content', 'scripture_navigation', 'Previous Scripture');
     });
   }
   if (nextBtn) {
     nextBtn.addEventListener('click', function() {
-      trackEvent('interaction', 'content', 'scripture_navigation', 'Next Scripture');
+      trackEvent('interaction_scripture_navigation_next', 'content', 'scripture_navigation', 'Next Scripture');
     });
   }
 
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
   galleryImages.forEach(img => {
     img.addEventListener('click', function() {
       const altText = this.alt || 'Gallery Image';
-      trackEvent('interaction', 'gallery', 'image_click', altText);
+      trackEvent('interaction_gallery_image_click', 'gallery', 'image_click', altText);
     });
   });
 
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (mobileMenuToggle) {
     mobileMenuToggle.addEventListener('click', function() {
       const isActive = this.classList.contains('active');
-      trackEvent('interaction', 'navigation', 'mobile_menu', isActive ? 'Open' : 'Close');
+      trackEvent('interaction_mobile_menu', 'navigation', 'mobile_menu', isActive ? 'Open' : 'Close');
     });
   }
 
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const href = this.getAttribute('href');
       const linkText = this.textContent.trim();
       if (href.startsWith('#')) {
-        trackEvent('navigation', 'internal', 'section_nav', linkText);
+        trackEvent('navigation_link_click', 'internal', 'section_nav', linkText);
       }
     });
   });
@@ -162,21 +162,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollPercent = (scrollTop / docHeight) * 100;
 
     if (scrollPercent >= 25 && !scrollDepthTracked[0]) {
-      trackEvent('engagement', 'scroll', 'scroll_depth', '25%');
+      trackEvent('scroll_25', 'scroll', 'scroll_depth', '25%');
       scrollDepthTracked[0] = true;
     }
     if (scrollPercent >= 50 && !scrollDepthTracked[1]) {
-      trackEvent('engagement', 'scroll', 'scroll_depth', '50%');
+      trackEvent('scroll_50', 'scroll', 'scroll_depth', '50%');
       scrollDepthTracked[1] = true;
     }
     if (scrollPercent >= 75 && !scrollDepthTracked[2]) {
-      trackEvent('engagement', 'scroll', 'scroll_depth', '75%');
+      trackEvent('scroll_75', 'scroll', 'scroll_depth', '75%');
       scrollDepthTracked[2] = true;
     }
     if (scrollPercent >= 100 && !scrollDepthTracked[3]) {
-      trackEvent('engagement', 'scroll', 'scroll_depth', '100%');
+      trackEvent('scroll_100', 'scroll', 'scroll_depth', '100%');
       scrollDepthTracked[3] = true;
     }
+  });
+
+  const googleFormLinks = document.querySelectorAll('a[href*="docs.google.com/forms"]');
+  googleFormLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      if (typeof trackEvent === 'function') {
+        trackEvent('order_form_click', 'conversion', 'order_form_click', 'Google Form');
+      } else if (typeof gtag !== 'undefined') {
+        gtag('event','order_form_click',{ event_category:'conversion', event_action:'order_form_click', event_label:'Google Form' });
+      }
+    });
   });
 });
 
