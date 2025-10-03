@@ -340,6 +340,7 @@ html {
     /* Hero Section - Mobile Redesign */
     .hero {
         padding: 0;
+        margin: 0 -15px;
         min-height: 100vh;
         background-image: url('assets/scarf_hanger.jpg');
         background-size: cover;
@@ -350,6 +351,7 @@ html {
         align-items: center;
         justify-content: center;
         text-align: center;
+        width: calc(100% + 30px);
     }
     
     .hero::before {
