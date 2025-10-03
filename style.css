@@ -295,7 +295,7 @@ html {
 /* Mobile Styles */
 @media (max-width: 844px) {
     .container {
-        padding: 0 15px;
+        padding: 0 0px;
     }
     
     /* Navigation */
