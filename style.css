@@ -23,11 +23,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 2rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background-color: #fdf1ed;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    position: relative;
 }
 
 .logo {
@@ -358,7 +354,14 @@ html {
         padding: 0 0px;
     }
     
-    /* Navigation */
+    /* Navigation – sticky so it follows the top when scrolling */
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: #fdf1ed;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    }
     .mobile-menu-toggle {
         display: flex;
     }
@@ -505,9 +508,28 @@ html {
         padding: 0 1rem;
     }
     
+    /* Services: 3 cards in a horizontal row (scrollable) on mobile */
+    #services .services-cards {
+        display: flex !important;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 1rem;
+        padding: 0 1rem 0.5rem;
+        max-width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    #services .services-cards::-webkit-scrollbar {
+        display: none;
+    }
     #services .service-card {
-        width: 100% !important;
-        margin-bottom: 1rem;
+        flex: 0 0 auto;
+        width: 280px !important;
+        min-width: 280px !important;
+        margin-bottom: 0 !important;
     }
     
     /* Scripture Rotator */
@@ -529,9 +551,12 @@ html {
     
     /* Order Now Button */
     #order-now-button {
-        margin: 1rem;
-        padding: 1.5rem !important;
+        margin: 1rem auto;
+        padding: 1.25rem 1.5rem !important;
         min-height: auto !important;
+        max-width: 85%;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     #order-now-button h2 {
