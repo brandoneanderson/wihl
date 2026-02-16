@@ -1,16 +1,12 @@
-// Fix mobile viewport jump when browser/WebView UI shows or hides (e.g. Instagram in-app toolbar)
+// Set --vh once at load so hero has fixed height on mobile (avoids zoom effect when WebView toolbar shows/hides)
 function setViewportHeight() {
   const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
   const vh = height * 0.01;
   document.documentElement.style.setProperty('--vh', vh + 'px');
 }
 setViewportHeight();
-window.addEventListener('resize', setViewportHeight);
+// Only update on orientation change. Do NOT update on resize/scroll – that’s when the WebView toolbar shows/hides and causes the zoom effect.
 window.addEventListener('orientationchange', setViewportHeight);
-if (window.visualViewport) {
-  window.visualViewport.addEventListener('resize', setViewportHeight);
-  window.visualViewport.addEventListener('scroll', setViewportHeight);
-}
 
 // Interactive Scripture Rotator
 const scriptures = [
