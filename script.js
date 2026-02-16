@@ -1,11 +1,16 @@
-// Fix mobile viewport jump when browser UI (address bar / nav) shows or hides
+// Fix mobile viewport jump when browser/WebView UI shows or hides (e.g. Instagram in-app toolbar)
 function setViewportHeight() {
-  const vh = window.innerHeight * 0.01;
+  const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  const vh = height * 0.01;
   document.documentElement.style.setProperty('--vh', vh + 'px');
 }
 setViewportHeight();
 window.addEventListener('resize', setViewportHeight);
 window.addEventListener('orientationchange', setViewportHeight);
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', setViewportHeight);
+  window.visualViewport.addEventListener('scroll', setViewportHeight);
+}
 
 // Interactive Scripture Rotator
 const scriptures = [
