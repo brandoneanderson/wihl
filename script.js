@@ -144,6 +144,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Track gallery scroll (horizontal scroll on gallery grid)
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if (galleryGrid) {
+    let galleryScrollTracked = false;
+    galleryGrid.addEventListener('scroll', function() {
+      if (galleryScrollTracked) return;
+      galleryScrollTracked = true;
+      trackEvent('gallery_scroll', 'gallery', 'gallery_scrolled', 'User scrolled gallery');
+    });
+  }
+
   // Track mobile menu interactions
   if (mobileMenuToggle) {
     mobileMenuToggle.addEventListener('click', function() {
