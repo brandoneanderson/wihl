@@ -232,6 +232,14 @@ html {
     box-shadow: 0 12px 36px rgba(196,164,132,0.22);
     z-index: 2;
 }
+
+.gallery-item {
+    min-width: 0;
+}
+
+.gallery-item .gallery-img {
+    display: block;
+}
 /* Service card image interactivity */
 .service-card {
     transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.35s;
@@ -538,8 +546,41 @@ html {
         padding: 0 1rem;
     }
     
-    #gallery .gallery-img {
-        margin-bottom: 1rem;
+    /* Mobile: horizontal scroll gallery with fixed-size cells (no layout shift) */
+    #gallery .gallery-grid {
+        display: flex !important;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 1rem;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding: 0 1rem 0.5rem;
+        max-width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        scrollbar-width: none;
+    }
+    #gallery .gallery-grid::-webkit-scrollbar {
+        display: none;
+    }
+    #gallery .gallery-item {
+        flex: 0 0 auto;
+        width: 72vw;
+        max-width: 300px;
+        aspect-ratio: 1;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    #gallery .gallery-item .gallery-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        margin-bottom: 0 !important;
     }
     
     /* About Section */
