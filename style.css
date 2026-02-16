@@ -508,27 +508,42 @@ html {
         padding: 0 1rem;
     }
     
-    /* Services: 3 cards in a horizontal row (scrollable) on mobile */
+    /* Services: horizontal row like gallery – first card visible, swipe right for rest */
     #services .services-cards {
         display: flex !important;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
         gap: 1rem;
-        padding: 0 1rem 0.5rem;
-        max-width: 100%;
+        padding: 0 1rem 0.5rem !important;
+        max-width: 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        overscroll-behavior-x: contain;
+    }
+    /* Spacers so first/last cards have breathing room (like gallery) */
+    #services .services-cards::before {
+        content: '';
+        flex: 0 0 1rem;
+        min-width: 1rem;
+    }
+    #services .services-cards::after {
+        content: '';
+        flex: 0 0 1rem;
+        min-width: 1rem;
     }
     #services .services-cards::-webkit-scrollbar {
         display: none;
     }
     #services .service-card {
-        flex: 0 0 auto;
+        flex: 0 0 auto !important;
+        flex-shrink: 0 !important;
         width: 280px !important;
         min-width: 280px !important;
+        max-width: 280px !important;
         margin-bottom: 0 !important;
     }
     
@@ -549,13 +564,14 @@ html {
         font-size: 1.5rem !important;
     }
     
-    /* Order Now Button */
+    /* Order Now Button – narrower and centered on mobile */
     #order-now-button {
-        margin: 1rem auto;
+        margin: 1rem auto !important;
         padding: 1.25rem 1.5rem !important;
         min-height: auto !important;
-        max-width: 85%;
-        width: 100%;
+        max-width: 85% !important;
+        width: 85% !important;
+        flex: none !important;
         box-sizing: border-box;
     }
     
@@ -620,8 +636,22 @@ html {
     }
     
     #about .container {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 1.25rem !important;
+        align-items: flex-start !important;
+    }
+    
+    #about .container > div:first-child {
+        flex: 0 0 38% !important;
+        min-width: 0 !important;
+        max-width: 38% !important;
+    }
+    
+    #about .container > div:last-child {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        text-align: left !important;
     }
     
     #about h2 {
@@ -630,7 +660,7 @@ html {
     
     #about p {
         font-size: 1rem !important;
-        padding: 0 1rem;
+        padding: 0 !important;
     }
     
     /* Contact Section */
