@@ -87,19 +87,21 @@ nav {
     gap: 1rem;
 }
 
-/* Hero tagline – desktop */
-.mobile-selling-text {
-    display: inline-block;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: #4a3c2e;
-    background: linear-gradient(135deg, #fbe3db 0%, rgba(196, 164, 132, 0.2) 100%);
-    padding: 0.5rem 1.25rem;
-    margin-bottom: 1.5rem;
-    border-radius: 999px;
-    border: 1px solid rgba(196, 164, 132, 0.35);
-    letter-spacing: 0.02em;
-    box-shadow: 0 2px 8px rgba(196, 164, 132, 0.12);
+/* Hero tagline – desktop only (pill style) */
+@media (min-width: 845px) {
+    .mobile-selling-text {
+        display: inline-block;
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: #4a3c2e;
+        background: linear-gradient(135deg, #fbe3db 0%, rgba(196, 164, 132, 0.2) 100%);
+        padding: 0.5rem 1.25rem;
+        margin-bottom: 1.5rem;
+        border-radius: 999px;
+        border: 1px solid rgba(196, 164, 132, 0.35);
+        letter-spacing: 0.02em;
+        box-shadow: 0 2px 8px rgba(196, 164, 132, 0.12);
+    }
 }
 
 .gallery-btn {
