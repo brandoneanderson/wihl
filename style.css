@@ -354,6 +354,8 @@ html {
         width: 80%;
         max-width: 300px;
         height: 100vh;
+        height: 100dvh;
+        height: -webkit-fill-available;
         background-color: #fdf1ed;
         flex-direction: column;
         justify-content: flex-start;
@@ -381,11 +383,14 @@ html {
         width: 80%;
     }
     
-    /* Hero Section - Mobile Redesign */
+    /* Hero Section - Mobile Redesign – dvh + --vh so browser UI show/hide doesn’t resize */
     .hero {
         padding: 0rem 0;
         padding: 0;
         min-height: 100vh;
+        min-height: calc(var(--vh, 1vh) * 100);
+        min-height: 100dvh;
+        min-height: -webkit-fill-available;
         background-image: url('assets/scarf_hanger.jpg');
         background-size: cover;
         background-position: center;

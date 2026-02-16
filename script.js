@@ -1,3 +1,12 @@
+// Fix mobile viewport jump when browser UI (address bar / nav) shows or hides
+function setViewportHeight() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', vh + 'px');
+}
+setViewportHeight();
+window.addEventListener('resize', setViewportHeight);
+window.addEventListener('orientationchange', setViewportHeight);
+
 // Interactive Scripture Rotator
 const scriptures = [
   '"Let all that you do be done in love." – 1 Corinthians 16:14',
