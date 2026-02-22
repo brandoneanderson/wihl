@@ -12,6 +12,38 @@ body {
     background-color: #fdf1ed;
 }
 
+/* Birthday / anniversary banner (April 22) */
+.birthday-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    z-index: 9999;
+    background: linear-gradient(135deg, #fbe3db 0%, #fdf1ed 100%);
+    color: #4a3c2e;
+    padding: 1.75rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(74, 60, 46, 0.2), 0 0 0 1px rgba(196, 164, 132, 0.3);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    max-width: 90%;
+}
+.birthday-banner.birthday-banner-visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+.birthday-banner-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+.birthday-banner-sub {
+    font-size: 1.1rem;
+    color: #555;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;

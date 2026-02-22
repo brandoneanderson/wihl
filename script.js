@@ -1,3 +1,45 @@
+// Birthday confetti: April 28th, first load of the day only
+function maybeShowBirthdayConfetti() {
+  var now = new Date();
+  if (now.getMonth() !== 3 || now.getDate() !== 28) return; // April 28 only
+  if (typeof confetti !== 'function') return;
+
+  var banner = document.createElement('div');
+  banner.className = 'birthday-banner';
+  banner.innerHTML = '<p class="birthday-banner-title">🎈Happy birthday Daniella Embu!🎈</p><p class="birthday-banner-sub">1 year anniversary of WIHL 🎂</p>';
+  document.body.appendChild(banner);
+  setTimeout(function() {
+    banner.classList.add('birthday-banner-visible');
+  }, 100);
+  setTimeout(function() {
+    banner.classList.remove('birthday-banner-visible');
+    setTimeout(function() {
+      if (banner.parentNode) banner.parentNode.removeChild(banner);
+    }, 400);
+  }, 6000);
+
+  var duration = 4e3;
+  var end = Date.now() + duration;
+  function frame() {
+    confetti({
+      particleCount: 3,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: ['#fbe3db', '#c4a484', '#4a3c2e', '#fdf1ed', '#e8c4b0']
+    });
+    confetti({
+      particleCount: 3,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: ['#fbe3db', '#c4a484', '#4a3c2e', '#fdf1ed', '#e8c4b0']
+    });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  }
+  frame();
+}
+
 // Set --vh once at load so hero has fixed height on mobile (avoids zoom effect when WebView toolbar shows/hides)
 function setViewportHeight() {
   const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
@@ -98,6 +140,8 @@ function trackEvent(eventName, eventCategory, eventAction, eventLabel = null) {
 
 // Track button clicks
 document.addEventListener('DOMContentLoaded', function() {
+  maybeShowBirthdayConfetti();
+
   // Track CTA button clicks
   const ctaButtons = document.querySelectorAll('.contact-btn, .gallery-btn');
   ctaButtons.forEach(button => {
